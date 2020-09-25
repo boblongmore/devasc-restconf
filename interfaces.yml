@@ -1,0 +1,18 @@
+---
+
+
+    interface:
+    - name: Loopback0
+      enabled: True
+      type: iana-if-type:softwareLoopback
+      ietf-ip:ipv4:
+        address:
+          ip: 3.3.3.3
+          netmask: 255.255.255.255
+    - name: Loopback1
+      enabled: True
+      type: iana-if-type:softwareLoopback
+      ietf-ip:ipv4:
+        address:
+          ip: 4.4.4.4
+          netmask: 255.255.255.255

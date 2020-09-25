@@ -2,19 +2,24 @@
 
 import requests
 import json
+import yaml
 
+
+#every restconf call begins with the restconf/data path"
 host = "https://r1.lab.local/restconf/data/"
 
-uri = "ietf-interfaces:interfaces/"
+#find the path using pyang, ANX, or yang explorer
+path = "ietf-interfaces:interfaces/interface=Loopback1"
 
 headers = {
     "Accept": "application/yang-data+json",
     "Content-Type": "application/yang-data+json",
 }
 
-username = 'wwt'
-password = 'WWTwwt1!'
+username = "wwt"
+password = "WWTwwt1!"
 
+#using requests session to persist session
 def build_session():
 
     session = requests.session()
@@ -23,13 +28,13 @@ def build_session():
     session.headers = headers
     return session
 
-def get_intf():
-    url = (host+uri)
+def del_intf():
+    url = (host+path)
     session = build_session()
 
-    results = session.get(url)
-    return results.json()
+    results = session.delete(url)
+    return results.status_code
 
 if __name__ == "__main__":
-    results = json.dumps(get_intf(), indent=2)
-    print(results)
+    results = del_intf()
+    print(f"returned status code: {results}")

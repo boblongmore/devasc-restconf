@@ -5,8 +5,7 @@ import json
 
 host = "https://192.168.2.161/restconf/data/"
 
-#uri = "Cisco-IOS-XE-native:native/ip/route"
-uri = "Cisco-IOS-XE-ospf-oper"
+path = "openconfig-interfaces:interfaces"
 
 headers = {
     "Accept": "application/yang-data+json",
@@ -24,14 +23,15 @@ def build_session():
     session.headers = headers
     return session
 
-def get_intf():
-    url = (host+uri)
+def get_ip_route():
+    url = (host+path)
     session = build_session()
 
     results = session.get(url)
     return results.json()
 
 if __name__ == "__main__":
-    results = json.dumps(get_intf())
-    print(results)
-
+    results = get_ip_route()
+    #uncomment to see entire payload
+    print(json.dumps(results, indent=2))
+    #    print(f"{route['prefix']:17}{route['mask']:17}{route['fwd-list'][0]['fwd']}")
