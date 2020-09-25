@@ -3,8 +3,10 @@
 import requests
 import json
 
+#every restconf call begins with the restconf/data path"
 host = "https://192.168.2.161/restconf/data/"
 
+#find the path using pyang, ANX, or yang explorer
 path = "Cisco-IOS-XE-native:native/ip/route"
 
 headers = {
@@ -43,13 +45,9 @@ def add_ip_route():
     url = (host+path)
     session = build_session()
 
-    results = session.put(url, json=payload)
+    results = session.patch(url, json=payload)
     return results.status_code
 
 if __name__ == "__main__":
     results = add_ip_route()
     print(f"Returned status code {results}")
-    #for route in results['Cisco-IOS-XE-native:route']['ip-route-interface-forwarding-list']:
-    #    #print(route)
-    #    print(f"{route['prefix']:17}{route['mask']:17}{route['fwd-list'][0]['fwd']}")
-#

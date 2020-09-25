@@ -34,4 +34,6 @@ if __name__ == "__main__":
     results = get_ip_route()
     #uncomment to see entire payload
     print(json.dumps(results, indent=2))
+    #for route in results['Cisco-IOS-XE-native:route']['ip-route-interface-forwarding-list']:
+    #    #print(route)
     #    print(f"{route['prefix']:17}{route['mask']:17}{route['fwd-list'][0]['fwd']}")

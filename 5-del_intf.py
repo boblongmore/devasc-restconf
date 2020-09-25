@@ -9,7 +9,7 @@ import yaml
 host = "https://r1.lab.local/restconf/data/"
 
 #find the path using pyang, ANX, or yang explorer
-path = "ietf-interfaces:interfaces/interface=Loopback1"
+path = "ietf-interfaces:interfaces/interface=Loopback3"
 
 headers = {
     "Accept": "application/yang-data+json",
